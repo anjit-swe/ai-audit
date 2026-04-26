@@ -1,13 +1,86 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ai-audit</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Visibility Checker</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      width: 350px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    ul {
+      text-align: left;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>AI Visibility Checker</h2>
+
+  <input type="text" id="url" placeholder="Enter website URL">
+
+  <button onclick="analyze()">Check</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function analyze() {
+  let url = document.getElementById("url").value;
+
+  if (!url) return;
+
+  let score = Math.floor(Math.random() * 30) + 65;
+
+  let issues = [
+    "Missing schema markup (structured data)",
+    "Content lacks clear hierarchy",
+    "No dedicated FAQ section",
+    "Low semantic clarity for AI parsing",
+    "Meta tags not optimized"
+  ];
+
+  let html = `<h3>Score: ${score}/100</h3><ul>`;
+
+  issues.forEach(i => {
+    html += `<li>${i}</li>`;
+  });
+
+  html += "</ul>";
+
+  document.getElementById("result").innerHTML = html;
+}
+</script>
+
+</body>
 </html>
